@@ -1,0 +1,1 @@
+#This is the first workout assignment for Stats 133. In this project, we will be analyzing "shot data" of NBA players (specifically Golden State Warriors players) through visualizations and summaries.
