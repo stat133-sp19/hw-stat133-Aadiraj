@@ -1,0 +1,1 @@
+This is a package for the binominal distribution. In this package, the user can create a binominal random variable, a binominal distribution, and a binominal cumulative distribution. See introduction.Rmd in vignettes for more information.

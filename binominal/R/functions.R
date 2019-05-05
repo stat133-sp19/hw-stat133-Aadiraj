@@ -114,13 +114,13 @@ bin_choose <- function(n, k) {
 #' @export
 #' @examples
 #' # probability of getting 2 successes in 5 trials
-#' # (assuming prob of success = 0.5) 
+#' # (assuming prob of success = 0.5)
 #' bin_probability(success = 2, trials = 5, prob = 0.5)
 #'
-#' # probabilities of getting 2 or less successes in 5 trials 
+#' # probabilities of getting 2 or less successes in 5 trials
 #' # (assuming prob of success = 0.5)
 #' bin_probability(success = 0:2, trials = 5, prob = 0.5)
-#' 
+#'
 #' # 55 heads in 100 tosses of a loaded coin with 45% chance of heads
 #' bin_probability(success = 55, trials = 100, prob = 0.45)
 bin_probability <- function(success, trials, prob) {
@@ -150,7 +150,7 @@ bin_distribution <- function(trials, prob) {
 
 #' @export
 plot.bindis <- function(dis) {
-  return(barplot(dis$probability, names.arg = dis$success))
+  return(barplot(dis$probability, names.arg = dis$success, xlab = "success", ylab = "probability", main = "Probability Distribution"))
 }
 
 #' @title bin cumlative
@@ -176,7 +176,7 @@ bin_cumulative <- function(trials, prob) {
 
 #' @export
 plot.bincums <- function(dis) {
-  return(plot(dis$success, dis$cumulative, type="o", xlab = "success", ylab = "probability"))
+  return(plot(dis$success, dis$cumulative, type="o", xlab = "success", ylab = "probability", main = "Cumulative Distribution"))
 }
 
 plot.bincums(bin_cumulative(5, 0.5))
@@ -199,9 +199,11 @@ bin_variable <- function(trials, prob) {
   }
 }
 
-#' @export
+
 cat("Binominal Variable\n\nParamaters \n - number of trials:", (bin_variable(5,0.5)[[1]]), "\n - prob of success:", (bin_variable(5,0.5)[[2]]))
 bin_variable(5,0.5)[1]
+
+#' @export
 print.binvar <- function(var) {
   cat("Binominal Variable\n\nParamaters \n - number of trials:", var[[1]], "\n - prob of success:", var[[2]])
 }
@@ -209,15 +211,15 @@ bin_variable(5, 0.5)
 
 #' @export
 summary.binvar <- function(var) {
-  result = list(var[[1]], var[[2]], aux_mean(var[[1]], var[[2]]), aux_variance(var[[1]], var[[2]]), aux_mode(var[[1]], var[[2]]), aux_skewness(var[[1]], var[[2]]), aux_kurtosis(var[[1]], var[[2]])) 
+  result = list(var[[1]], var[[2]], aux_mean(var[[1]], var[[2]]), aux_variance(var[[1]], var[[2]]), aux_mode(var[[1]], var[[2]]), aux_skewness(var[[1]], var[[2]]), aux_kurtosis(var[[1]], var[[2]]))
 }
 
 #' @export
 print.summary.binvar <- function(var) {
   summary <- summary.binvar(var)
-  cat("Summary Binominal\n\nParamaters \n - number of trials:", var[[1]], "\n - prob of success:", var[[2]], "\nMeasures\n - mean:", summary[[1]], "\n - varience:", summary[[2]], "\n - mode:", summary[[3]],"\n - skewness:", summary[[4]],"\n - kurtosis:", summary[[5]] )
+  cat("Summary Binominal\n\nParamaters \n - number of trials:", var[[1]], "\n - prob of success:", var[[2]], "\nMeasures\n - mean:", summary[[1]], "\n - variance:", summary[[2]], "\n - mode:", summary[[3]],"\n - skewness:", summary[[4]],"\n - kurtosis:", summary[[5]] )
 }
-print.summary.binvar(var1sum)
+
 
 #' @title bin mean
 #' @description binominal mean
