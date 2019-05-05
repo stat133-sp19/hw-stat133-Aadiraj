@@ -1,0 +1,77 @@
+---
+title: "Getting Started with binominal"
+author: "Aadiraj Batlaw"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to binominal}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binominal)
+```
+
+## Binominal
+
+The package `"binominal"` is a minimal implementation for simulating the binominal distribution for a given number of trials and a specified probability of each success, and to visualize the relative frequencies in such successes.
+
+
+## Creating a `binominal random variable`
+
+The first step is to create a `"binominal random variable"` object with the function `bin_distribution(trials, prob)`:
+
+```{r}
+myvar <- bin_variable(5, 0.3)
+myvar
+```
+Use print.binvar() to view the binominal distribution in a more visually appealing format.
+```{r}
+print.binvar(myvar)
+```
+
+## Summary of binominal random variable
+
+Once you have defined a `"binominal random variable"` object, you can use the function `summary()` to
+output a summary of the random variable.
+
+```{r}
+sumVar <- summary(myvar)
+sumVar
+```
+
+Use the print.summary.binvar() function to read it in a more visually appealing format.
+```{r}
+print.summary.binvar(myvar)
+```
+
+
+## Plot of success
+
+You can use the bin_distribution function to get the distribution of the random variable.
+
+```{r}
+dis <- bin_distribution(5, 0.3)
+dis
+```
+And then you can use the plot() function to visualize this distribution.
+
+```{r, fig.show='hold'}
+plot(dis)
+```
+
+You can use the bin_cumulative function to get the cumulative distribution of the random variable.
+
+```{r}
+cumul <- bin_cumulative(5, 0.3)
+cumul
+```
+And then you can use the plot.bincums() function to visualizae this distribution.
+
+```{r}
+plot.bincums(cumul)
+```
+
+
